@@ -6,7 +6,7 @@
 
 int main()
 {
-	int time, over_time;
+	long int time, over_time;
 	double salary, net_income, tax;
 	
 	scanf("%d", &time);
@@ -30,7 +30,7 @@ int main()
 		net_income = salary-tax;
 	}
 	
-	if (300<salary<=450)
+	if (300<salary && salary<=450)
 	{
 		tax = 300*tax_rate1+(salary-300)*tax_rate2;
 		net_income = salary-tax;
@@ -42,25 +42,7 @@ int main()
 		net_income = salary-tax;
 	}
 	
-	/* previous code
-	if (salary<=300)
-	{
-		tax = salary*tax_rate1;
-		net_income = salary-tax;
-	}
-	
-	if (300<salary<=450)
-	{
-		tax = salary*tax_rate2;
-		net_income = salary-tax;
-	}
-	
-	else
-	{
-		tax = salary*tax_rate3;
-		net_income = salary-tax;
-	}
-	*/
 	printf("%.2lf %.2lf", tax, net_income);
 	
+	return 0;
 }
