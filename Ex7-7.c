@@ -30,13 +30,13 @@ int main()
 		net_income = salary-tax;
 	}
 	
-	if (300<salary && salary<=450)
+	else if (300<salary && salary<=450)
 	{
 		tax = 300*tax_rate1+(salary-300)*tax_rate2;
 		net_income = salary-tax;
 	}
 	
-	if (450<salary)
+	else if (450<salary)
 	{
 		tax = 300*tax_rate1+150*tax_rate2+(salary-450)*tax_rate3;
 		net_income = salary-tax;
