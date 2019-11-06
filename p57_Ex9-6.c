@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void three (double a, double b, double c);
+void three (double *a, double *b, double *c);
 
 int main()
 {
@@ -8,31 +8,57 @@ int main()
 	
 	while ((scanf("%lf %lf %lf", &a, &b, &c)) == 3)
 	{
-		three (a, b, c);
+		three (&a, &b, &c);
+		printf ("%lf %lf %lf", a, b, c);
 	}
 	
 	return 0;
 }
 
-void three (double a, double b, double c)
+void three (double *a, double *b, double *c)
 {
-	if (a>b)
+	double **one, **two, **three;
+	
+	if (*a>*b)
 	{
-		if (b>c) //a>b>c
-			printf("%lf %lf %lf\n", c, b, a);
-		else if (c>a) //c>a>b
-			printf("%lf %lf %lf\n", b, a, c);
+		if (*b>*c) //a>b>c
+		{
+			**one = *a;
+			**two = *b;
+			**three = *c;
+		}
+		else if (*c>*a) //c>a>b
+		{
+			**one = *c;
+			**two = *a;
+			**three = *b;
+		}
 		else //a>c>b
-			printf("%lf %lf %lf\n", b, c, a);
+		{
+			**one = *a;
+			**two = *c;
+			**three = *b;
+		}
 	}
 	
-	else if (b>a)
+	else if (*b>*a)
 	{
-		if (a>c) //b>a>c
-			printf("%lf %lf %lf\n", c, a, b);
-		else if (c>b) //c>b>a
-			printf("%lf %lf %lf\n", a, b, c);
+		if (*a>*c) //b>a>c
+		{
+			**one = *b;
+			**two = *a;
+			**three = *c;
+		}
+		else if (*c>*b) //c>b>a
+		{	**one = *c;
+			**two = *b;
+			**three = *a;
+		}
 		else //b>c>a
-			printf("%lf %lf %lf\n", a, c, b);
+		{
+			**one = *b;
+			**two = *c;
+			**three = *a;
+		}
 	}
 }
