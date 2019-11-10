@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void three (double *a, double *b, double *c);
+void order(double *n1, double *n2, double *n3);
 
 int main()
 {
@@ -8,57 +8,64 @@ int main()
 	
 	while ((scanf("%lf %lf %lf", &a, &b, &c)) == 3)
 	{
-		three (&a, &b, &c);
-		printf ("%lf %lf %lf", a, b, c);
+		order(&a, &b, &c);
+		printf ("%lf %lf %lf\n", a, b, c);
 	}
 	
 	return 0;
 }
 
-void three (double *a, double *b, double *c)
+void order (double *n1, double *n2, double *n3)
 {
-	double **one, **two, **three;
+	double n, m;
 	
-	if (*a>*b)
+	if (*n3>*n2)
 	{
-		if (*b>*c) //a>b>c
+		if (*n2>*n1) //c>b>a
 		{
-			**one = *a;
-			**two = *b;
-			**three = *c;
+			*n1 = *n1;
+			*n2 = *n2;
+			*n3 = *n3;
 		}
-		else if (*c>*a) //c>a>b
+		else if (*n1>*n3) //a>c>b
 		{
-			**one = *c;
-			**two = *a;
-			**three = *b;
+			n = *n1;
+			*n1 = *n2;
+			*n2 = *n3;
+			*n3 = n;
 		}
-		else //a>c>b
+		else //c>a>b
 		{
-			**one = *a;
-			**two = *c;
-			**three = *b;
+			n = *n1;
+			*n1 = *n2;
+			*n2 = *n1;
+			*n3 = *n3;
 		}
 	}
 	
-	else if (*b>*a)
+	else if (*n2>*n3)
 	{
-		if (*a>*c) //b>a>c
+		if (*n1>*n2) //a>b>c
 		{
-			**one = *b;
-			**two = *a;
-			**three = *c;
+			n = *n1;
+			*n1 = *n3;
+			*n2 = *n2;
+			*n3 = n;
 		}
-		else if (*c>*b) //c>b>a
-		{	**one = *c;
-			**two = *b;
-			**three = *a;
-		}
-		else //b>c>a
+		else if (*n3>*n1) //b>c>a
 		{
-			**one = *b;
-			**two = *c;
-			**three = *a;
+			n = *n2;
+			*n1 = *n1;
+			*n2 = *n3;
+			*n3 = n;
+		}
+		else //b>a>c
+		{
+			n = *n1;
+			m = *n2;
+			*n1 = *n3;
+			*n2 = n;
+			*n3 = m;
 		}
 	}
 }
