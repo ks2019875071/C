@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int small(int *a, int n)
+int small(long int *a, long int n)
 {
 	int x, y, i;
 	x = a[0];
@@ -23,16 +23,18 @@ int small(int *a, int n)
 
 int main()
 {
-	int a[1000001];
-	int n, i;
+	long int a[1000001];
+	long int n, i;
+	
+	scanf("%ld", &n);
 	
 	for (i=0; i<n; i++)
 	{
-		scanf("%d", a[i]);
+		scanf("%ld", a[i]);
 	}
 	small(a, n);
 	
-	printf("%d", small(a, n));
+	printf("%ld", small(a, n));
 	
 	return 0;
 }
