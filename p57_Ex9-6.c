@@ -38,7 +38,7 @@ void order (double *n1, double *n2, double *n3)
 		{
 			n = *n1;
 			*n1 = *n2;
-			*n2 = *n1;
+			*n2 = n;
 			*n3 = *n3;
 		}
 	}
