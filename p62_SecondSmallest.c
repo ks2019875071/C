@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int small(long int *a, long int n)
+int small(int *a, int n)
 {
 	int x, y, i;
 	x = a[0];
@@ -23,18 +24,22 @@ int small(long int *a, long int n)
 
 int main()
 {
-	long int a[1000001];
-	long int n, i;
+	int n, i;
 	
-	scanf("%ld", &n);
+	scanf("%d", &n);
+	
+	int *a = (int *)malloc(sizeof(int) * n);
 	
 	for (i=0; i<n; i++)
 	{
-		scanf("%ld", a[i]);
+		scanf("%d", a);
+		a = a+1;
 	}
 	small(a, n);
 	
-	printf("%ld", small(a, n));
+	printf("%d", small(a, n));
+	
+	free(a);
 	
 	return 0;
 }
