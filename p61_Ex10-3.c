@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int big(int n[], int count)
+int big(int *n, int count)
 {
 	int i, m = n[0];
 	for (i=0; i<count; i++)
 	{
-		if (n[i]>m)
+		if (n[i] > m)
 		{
 			m = n[i];
 		}
@@ -16,12 +16,14 @@ int big(int n[], int count)
 
 int main()
 {
-	int *n = (int *)malloc(sizeof(int)*1000000);
+	int *n;
+	int num;
+	n = (int *)malloc(sizeof(int)*1000000);
 	int count = 0;
-	while ((scanf("%d", n)) != EOF)
+	
+	while ((scanf("%d", &num)) != EOF)
 	{
-		count++;
-		n = n+1;
+		n[count++] = num;
 	}
 	big(n, count);
 	

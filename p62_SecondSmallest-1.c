@@ -4,16 +4,17 @@
 int small(int *a, int n)
 {
 	int x, y, i;
-	x = a[0];
-	y = a[0];
+	x = 10000000;
 	
 	for (i=0; i<n; i++)
 	{
-		if (a[i]<x)
+		if (a[i] < x)
 		{
+			y = x;
 			x = a[i];
+			//printf("%d, %d\n", x, y);
 		}
-		else if (a[i]>x && a[i]<y)
+		else if(a[i] < y)
 		{
 			y = a[i];
 		}
@@ -23,15 +24,18 @@ int small(int *a, int n)
 
 int main()
 {
-	int n, i;
+	int n, num, i;
 	
 	scanf("%d", &n);
 	
-	int *a = (int *)malloc(sizeof(int) * n);
+	int *a;
+	a = (int *)malloc(sizeof(int) * n);
 	
 	for (i=0; i<n; i++)
 	{
-		scanf("%d", a[i]);
+		scanf("%d", &num);
+		//printf("%d\n", num);
+		a[i] = num;
 	}
 	small(a, n);
 	
@@ -39,5 +43,3 @@ int main()
 	
 	return 0;
 }
-
-
