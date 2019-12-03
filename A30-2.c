@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-swap(int *a, int *b)
+void swap(float *a, float *b)
 {
-	int term = *a;
+	float term = *a;
 	*a = *b;
 	*b = term;
 }
 
-void quick(float *num, int n)
+void quick(int left, int right, float *num)
 {
-	int pivot = 0;
-	int left = 0, right = n;
+	int pivot = left;
 	
 	int i, j = pivot;
 	
@@ -28,8 +27,8 @@ void quick(float *num, int n)
 		swap(&num[left], &num[j]);
 		pivot = j;
 		
-		quick(pivot-1, num);
-		quick(right, num);
+		quick(left, pivot-1, num);
+		quick(pivot+1, right, num);
 	}
 	
 }
@@ -48,6 +47,8 @@ int main()
 	{
 		scanf("%f", &num[i]);
 	}
+	
+	quick(0, n-1, num);
 	
 	int m1, m2;
 	if (n%2 == 0)
