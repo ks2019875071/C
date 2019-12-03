@@ -1,24 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void quick(float *num, n)
+swap(int *a, int *b)
 {
-	float pivot;
+	int term = *a;
+	*a = *b;
+	*b = term;
+}
+
+void quick(float *num, int n)
+{
+	int pivot = 0;
+	int left = 0, right = n;
 	
-	pivot = num[n/2];
+	int i, j = pivot;
 	
-	int i;
-	for (i=0; i<n; i++)
+	if (left < right)
 	{
-		if (n[i] < pivot)
+		for (i=left+1; i<right; i++)
 		{
-			
+			if (num[i] < num[pivot])
+			{
+				j++;
+				swap(&num[j], &num[i]);
+			}
 		}
+		swap(&num[left], &num[j]);
+		pivot = j;
 		
-		else
-		{
-			
-		}
+		quick(pivot-1, num);
+		quick(right, num);
 	}
 	
 }
