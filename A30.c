@@ -1,34 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int compare(const void *a, const void *b)
+{
+	if (*(int *)a > *(int *)b)
+	{
+		return 1;
+	}
+	
+	if (*(int *)a < *(int *)b)
+	{
+		return -1;
+	}
+	
+	else
+	{
+		return 0;
+	}
+}
+
 int main()
 {
 	int n;
 	scanf("%d", &n);
 	
-	float *num;
-	num = (float *)malloc(sizeof(int)*n);
+	int *num;
+	num = (int *)malloc(sizeof(int)*n);
 	
-	int i, j;
-	float temp;
+	int i;
 	for (i=0; i<n; i++)
 	{
-		scanf("%f", &num[i]);
+		scanf("%d", &num[i]);
 	}
 	
-	for (i=0; i<n; i++)
-	{
-		for (j=0; j<n-i-1; j++)
-		{
-			if (num[j]>num[j+1])
-			{
-				temp = num[j];
-				num[j] = num[j+1];
-				num[j+1] = temp;
-			}
-		}
-	}
-	
+	qsort(num, n, sizeof(int), compare);
 	
 	int m1, m2;
 	if (n%2 == 0)
@@ -41,7 +46,7 @@ int main()
 	else
 	{
 		m2 = n/2;
-		printf("%d", (int)num[m2]);
+		printf("%d", num[m2]);
 	}
 	
 	return 0;
