@@ -8,10 +8,11 @@ int main()
 	{
 		pascal[i][0] = 1;
 		
-		for (j=1; j<i+1; j++)
+		for (j=1; j<=i+1; j++)
 		{
 			pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j];
 		}
+		pascal[i][i] = 1;
 	}
 	
 	int n, k;
